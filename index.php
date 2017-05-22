@@ -32,9 +32,9 @@ $datums=[
     'email4'=>['email','lasellers@gmail.com'],
     'email5'=>['email','<script>alert("injection email")</script>'],
 
-  /*  'post'=>['postInteger',
-        ['a'=>'2342342','b'=>'safdsdfdsf','c'=>'<script>alert("injection")</script>']
-        ],*/
+   'post'=>['postInteger',
+        ['a'=>'2342342','b'=>'safdsdfdsf','c'=>'<script>alert("injection post integer")</script>']
+        ],
 
 ];
 
@@ -47,11 +47,15 @@ foreach($datums as $key=>$datum ) {
     list($type,$value)=$datum;
     $newvalue= $sanitize->byType($type,$value);
     $bool= $validate->byType($type,$value)?"+VALID+":"-INVALID-";
-
-    echo "<tr><td>$type</td><td>$key</td><td><b>".$sanitize->forDisplay($value)."</b></td><td><i>$newvalue</i></td><td>$bool</td><td>";
-    var_dump($newvalue);
+if($type=="postInteger") {
+    echo "<tr><td>$type</td><td>$key</td><td><b>".var_export($sanitize->forDisplayArray($value),true)."</b></td><td><i>".var_export($newvalue,true)."</i></td><td>$bool</td><td>";
     echo "</td></tr>\n";
-   // var_dump($newvalue); echo "<br>\n";
+} else {
+    echo "<tr><td>$type</td><td>$key</td><td><b>".$sanitize->forDisplay($value)."</b></td><td><i>$newvalue</i></td><td>$bool</td><td>";
+   // var_dump($newvalue);
+    echo "</td></tr>\n";
+}
+
 }
 echo "</table>\n";
 

@@ -30,9 +30,10 @@ class sanitize {
     }
 
     public function postInteger(array $array): array {
-        $matches = array_filter($array, function ($haystack) {
-          //  return preg_match("/(.+)" . $this->year . "/", $haystack);
-        });
+        $matches = array_map(function ($item) {
+            return $this->integer($item);
+        },$array);
+        return $matches;
     }
 
     public function byType($type,$value) {
@@ -65,9 +66,14 @@ class sanitize {
     }
 
 
-
-public function forDisplay(string $string) {
+public function forDisplay(string $string): string {
         return $this->text($string);     
+}
+public function forDisplayArray(array $array): array {
+        $newArray = array_map(function ($item) {
+            return $this->text($item);
+        },$array);
+        return $newArray;   
 }
 
 }
