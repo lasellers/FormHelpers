@@ -35,7 +35,14 @@ $datums=[
     'email4'=>['email','lasellers@gmail.com'],
     'email5'=>['email','<script>alert("injection email")</script>'],
 
-   'post'=>['postInteger',
+    'url1'=>['url','2342423423423'],
+    'url2'=>['url','123-456-7890'],
+    'url3'=>['url','http://php.net'],
+    'url3s'=>['url','https://php.net'],
+    'url4'=>['url','php.net'],
+    'url5'=>['url','<script>alert("injection url")</script>'],
+    
+    'post'=>['postInteger',
         ['a'=>'2342342','b'=>'safdsdfdsf','c'=>'<script>alert("injection post integer")</script>']
         ],
 

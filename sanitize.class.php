@@ -21,6 +21,10 @@ class sanitize {
          return (string)preg_replace("/\d{3}[^\d]{0,2}\d{3}[^\d]{0,2}\d{4}/", '', filter_var ( $string, FILTER_SANITIZE_STRING));
     }
 
+    public function url(string $string): string {
+         return (string) filter_var ( filter_var ( $string, FILTER_SANITIZE_STRING), FILTER_SANITIZE_URL);
+    }
+
     public function string(string $string): string {
         return (string)filter_var ( $string, FILTER_SANITIZE_STRING); 
     }
@@ -53,6 +57,9 @@ class sanitize {
             case 'phone':
             return $this->phone($value);
 
+            case 'url':
+            return $this->url($value);
+
             case 'string':
             return $this->string($value);
 
@@ -65,6 +72,9 @@ class sanitize {
         }
     }
 
+    // Note: FILTER_SANITIZE_STRING basically just does a string_tags,
+    // but we prefer using it as it is more clear what the intent is,
+    // thus, use it here.
     public function forDisplay(string $string): string {
         return $this->text($string);     
     }

@@ -7,11 +7,11 @@ class validate {
     }
 
     public function integer(string $string) {
-        return is_int(filter_var ( $string, FILTER_VALIDATE_INT));
+        return (filter_var ( $string, FILTER_VALIDATE_INT));
     }
 
     public function number(string $string) {
-        return is_numeric(filter_var ( $string, FILTER_VALIDATE_FLOAT));     
+        return (filter_var ( $string, FILTER_VALIDATE_FLOAT));     
     }
 
     public function email(string $string) {
@@ -20,6 +20,10 @@ class validate {
 
     public function phone(string $string) {
         return (preg_match("/\d{3}[^\d]{0,2}\d{3}[^\d]{0,2}\d{4}/", $string));    
+    }
+
+    public function url(string $string) {
+        return (filter_var ( $string, FILTER_VALIDATE_URL));
     }
 
     public function string(string $string) {
@@ -53,6 +57,9 @@ class validate {
 
             case 'phone':
             return $this->phone($value);
+
+            case 'url':
+            return $this->url($value);
 
             case 'string':
             return $this->string($value);
