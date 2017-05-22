@@ -22,7 +22,6 @@ class sanitize {
     }
 
     public function string(string $string): string {
-        //preg_replace("/[^A-Za-z0-9]/", '', $string);
         return (string)filter_var ( $string, FILTER_SANITIZE_STRING); 
     }
 
@@ -31,19 +30,21 @@ class sanitize {
     }
 
     public function postInteger(array $array): array {
-
+        $matches = array_filter($array, function ($haystack) {
+           
+        });
     }
 
     public function byType($type,$value) {
         switch($type) {
+            case 'boolean':
+            return self::boolean($value);
+
             case 'integer':
             return self::integer($value);
 
             case 'number':
             return self::number($value);
-
-            case 'boolean':
-            return self::boolean($value);
 
             case 'email':
             return self::email($value);

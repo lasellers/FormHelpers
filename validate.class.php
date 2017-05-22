@@ -30,7 +30,9 @@ public function text(string $string) {
 }
 
 public function postInteger(array $array) {
-
+     $matches = array_filter($array, function ($haystack) {
+           
+        });
 }
 
 
@@ -63,16 +65,4 @@ public function postInteger(array $array) {
         }
     }
 
-/*
-       $listings = array_values(array_filter($listings, function ($listing) use ($search_session, $renter) {
-                        $anonymous_return = null;
-                        if ($renter && isset($listing['_price_tailored'])) {
-                            $anonymous_return = $listing['_price_tailored'] <= $search_session->max_rent;
-                        } else {
-                            $anonymous_return = $listing['base_price'] <= $search_session->max_rent;
-                        }
-                        return $anonymous_return;
-                    }));
-        }
-*/
 }
