@@ -4,8 +4,11 @@ require './sanitize.class.php';
 
 
 $datums=[
-    'bool1'=>['bool','2342423423423'],
-    'bool2'=>['bool','<script>alert("injection")</script>'],
+    'bool1'=>['boolean','2342423423423'],
+    'bool2'=>['boolean','<script>alert("injection")</script>'],
+    'bool3'=>['boolean','true'],
+    'bool4'=>['boolean',true],
+    'bool5'=>['boolean',1],
 
     'int1'=>['integer','2342423423423'],
     'int2'=>['integer','<script>alert("injection int")</script>'],
@@ -46,7 +49,7 @@ echo "<tr><th>Type</th><th>Key</th><th>Value</th><th>New</th><th>validate</th></
 foreach($datums as $key=>$datum ) {
     list($type,$value)=$datum;
     $newvalue= $sanitize->byType($type,$value);
-    $bool= $validate->byType($type,$value)?"+VALID+":"-INVALID-";
+    $bool= $validate->byType($type,$value)?"VALID":"<i>invalid</i>";
 if($type=="postInteger") {
     echo "<tr><td>$type</td><td>$key</td><td><b>".var_export($sanitize->forDisplayArray($value),true)."</b></td><td><i>".var_export($newvalue,true)."</i></td><td>$bool</td><td>";
     echo "</td></tr>\n";

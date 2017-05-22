@@ -2,7 +2,8 @@
 class validate {
 
     public function boolean(string $string) {
-        return is_bool(filter_var ( $string, FILTER_VALIDATE_BOOLEAN));
+       // return is_bool(filter_var ( $string, FILTER_VALIDATE_BOOLEAN));
+        return preg_match("/^(true|1)$/", filter_var ( $string, FILTER_SANITIZE_STRING)); ;
     }
 
     public function integer(string $string) {
@@ -39,28 +40,28 @@ class validate {
     public function byType($type,$value) {
         switch($type) {
             case 'boolean':
-            return self::boolean($value);
+            return $this->boolean($value);
 
             case 'integer':
-            return self::integer($value);
+            return $this->integer($value);
 
             case 'number':
-            return self::number($value);
+            return $this->number($value);
 
             case 'email':
-            return self::email($value);
+            return $this->email($value);
 
             case 'phone':
-            return self::phone($value);
+            return $this->phone($value);
 
             case 'string':
-            return self::string($value);
+            return $this->string($value);
 
             case 'text':
-            return self::text($value);
+            return $this->text($value);
 
             case 'postInteger':
-            return self::postInteger($value);
+            return $this->postInteger($value);
 
         }
     }
