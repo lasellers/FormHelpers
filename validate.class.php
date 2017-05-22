@@ -31,7 +31,7 @@ public function text(string $string) {
 
 public function postInteger(array $array) {
      $matches = array_filter($array, function ($haystack) {
-           
+          // return preg_match("/(.+)" . $this->year . "/", $haystack);
         });
 }
 
@@ -64,5 +64,6 @@ public function postInteger(array $array) {
 
         }
     }
+
 
 }
