@@ -19,7 +19,7 @@ class validate {
     }
 
     public function phone(string $string) {
-        return (preg_match("/\d{3}[^\d]{0,2}\d{3}[^\d]{0,2}\d{4}/", $string));    
+        return (preg_match("/^\d{3}[^\d]{0,2}\d{3}[^\d]{0,2}\d{4}$/", $string));    
     }
 
     public function url(string $string) {

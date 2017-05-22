@@ -18,7 +18,7 @@ class sanitize {
     }
 
     public function phone(string $string): string {
-         return (string)preg_replace("/\d{3}[^\d]{0,2}\d{3}[^\d]{0,2}\d{4}/", '', filter_var ( $string, FILTER_SANITIZE_STRING));
+         return (string)preg_replace("/^\d{3}[^\d]{0,2}\d{3}[^\d]{0,2}\d{4}$/", '', filter_var ( $string, FILTER_SANITIZE_STRING));
     }
 
     public function url(string $string): string {
