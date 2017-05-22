@@ -1,42 +1,42 @@
 <?php
 class validate {
 
-public function boolean(string $string) {
+    public function boolean(string $string) {
         return is_bool(filter_var ( $string, FILTER_VALIDATE_BOOLEAN));
-}
+    }
 
-public function integer(string $string) {
-    return is_int(filter_var ( $string, FILTER_VALIDATE_INT));
-}
+    public function integer(string $string) {
+        return is_int(filter_var ( $string, FILTER_VALIDATE_INT));
+    }
 
-public function number(string $string) {
-    return is_numeric(filter_var ( $string, FILTER_VALIDATE_FLOAT));     
-}
+    public function number(string $string) {
+        return is_numeric(filter_var ( $string, FILTER_VALIDATE_FLOAT));     
+    }
 
-public function email(string $string) {
-    return (preg_match("/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/", $string));
-}
+    public function email(string $string) {
+        return (preg_match("/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/", $string));
+    }
 
-public function phone(string $string) {
-    return (preg_match("/\d{3}[^\d]{0,2}\d{3}[^\d]{0,2}\d{4}/", $string));    
-}
+    public function phone(string $string) {
+        return (preg_match("/\d{3}[^\d]{0,2}\d{3}[^\d]{0,2}\d{4}/", $string));    
+    }
 
-public function string(string $string) {
-    return (preg_match("/(.*)(\r|\n)(.*)/", $string));    
-}
+    public function string(string $string) {
+        return (preg_match("/(.*)(\r|\n)(.*)/", $string));    
+    }
 
-public function text(string $string) {
-    return is_string($string); 
-}
+    public function text(string $string) {
+        return is_string($string); 
+    }
 
-public function postInteger(array $array) {
+    public function postInteger(array $array) {
         $newArray = array_map(function ($item) {
             return $this->integer($item);
         },$array);
         return $newArray;
-}
+    }
 
-  public function byType($type,$value) {
+    public function byType($type,$value) {
         switch($type) {
             case 'boolean':
             return self::boolean($value);
@@ -59,11 +59,10 @@ public function postInteger(array $array) {
             case 'text':
             return self::text($value);
 
-          case 'postInteger':
+            case 'postInteger':
             return self::postInteger($value);
 
         }
     }
-
 
 }

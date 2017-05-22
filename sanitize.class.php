@@ -59,21 +59,21 @@ class sanitize {
             case 'text':
             return self::text($value);
 
-          case 'postInteger':
+            case 'postInteger':
             return self::postInteger($value);
 
         }
     }
 
-
-public function forDisplay(string $string): string {
+    public function forDisplay(string $string): string {
         return $this->text($string);     
-}
-public function forDisplayArray(array $array): array {
+    }
+
+    public function forDisplayArray(array $array): array {
         $newArray = array_map(function ($item) {
             return $this->text($item);
         },$array);
         return $newArray;   
-}
+    }
 
 }
