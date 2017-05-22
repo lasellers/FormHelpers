@@ -14,7 +14,7 @@ class sanitize {
     }
 
     public function email(string $string): string { 
-        return (string)preg_replace("/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/", '', filter_var ( $string, FILTER_SANITIZE_STRING));
+        return (string)preg_replace("/^[a-zA-Z0-9_.]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/", '', filter_var ( $string, FILTER_SANITIZE_STRING));
     }
 
     public function phone(string $string): string {

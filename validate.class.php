@@ -15,7 +15,7 @@ class validate {
     }
 
     public function email(string $string) {
-        return (preg_match("/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/", $string));
+        return (preg_match("/^[a-zA-Z0-9_.]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/", $string));
     }
 
     public function phone(string $string) {
