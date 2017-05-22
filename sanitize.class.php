@@ -6,11 +6,11 @@ class sanitize {
     }
 
     public function integer(string $string) {
-        return (int)filter_var ( $string, FILTER_SANITIZE_NUMBER_INT); 
+        return filter_var ( $string, FILTER_SANITIZE_NUMBER_INT); 
     }
 
     public function number(string $string)  {
-        return (float)filter_var ( $string, FILTER_SANITIZE_NUMBER_FLOAT );
+        return filter_var ( $string, FILTER_SANITIZE_NUMBER_FLOAT );
     }
 
     public function email(string $string): string { 

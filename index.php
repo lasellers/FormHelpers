@@ -12,6 +12,11 @@ $datums=[
 
     'int1'=>['integer','2342423423423'],
     'int2'=>['integer','<script>alert("injection int")</script>'],
+    'int3'=>['integer','hello'],
+    'int4'=>['integer','5.79'],
+    'int5'=>['integer','0'],
+    'int5b'=>['integer','10'],
+    'int6'=>['integer',''],
 
     'number1'=>['number','2342423423423'],
     'number2'=>['number','<script>alert("injection number")</script>'],
