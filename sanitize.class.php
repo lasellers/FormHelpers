@@ -33,6 +33,17 @@ class sanitize {
         return (string)filter_var ( $string, FILTER_SANITIZE_STRING);     
     }
 
+    public function date(string $string, $format="d-m-Y")
+    {
+         $date = date_parse($string);
+        // or date_parse_from_format("d/m/Y", $date);
+        if(!checkdate($date['month'], $date['day'], $date['year']))
+        return "";
+
+        $time = strtotime($string);
+        return $time==0?"":date($format, $time);
+    }
+
     public function postInteger(array $array): array {
         $matches = array_map(function ($item) {
             return $this->integer($item);
@@ -59,6 +70,9 @@ class sanitize {
 
             case 'url':
             return $this->url($value);
+
+            case 'date':
+            return $this->date($value);
 
             case 'string':
             return $this->string($value);

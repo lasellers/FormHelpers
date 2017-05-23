@@ -34,6 +34,13 @@ class validate {
         return is_string($string); 
     }
 
+    public function date(string $string)
+    {
+        $date = date_parse($string);
+        // or date_parse_from_format("d/m/Y", $date);
+        return checkdate($date['month'], $date['day'], $date['year']);
+    }
+
     public function postInteger(array $array) {
         $newArray = array_map(function ($item) {
             return $this->integer($item);
@@ -60,6 +67,9 @@ class validate {
 
             case 'url':
             return $this->url($value);
+
+            case 'date':
+            return $this->date($value);
 
             case 'string':
             return $this->string($value);
