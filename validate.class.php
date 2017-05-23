@@ -4,31 +4,31 @@ class validate {
 
     public function boolean(string $string) {
        // return is_bool(filter_var ( $string, FILTER_VALIDATE_BOOLEAN));
-        return preg_match("/^(true|1)$/", filter_var ( $string, FILTER_SANITIZE_STRING)); ;
+        return preg_match("/^(true|1)$/", filter_var ( $string, FILTER_SANITIZE_STRING));
     }
 
     public function integer(string $string) {
-        return (filter_var ( $string, FILTER_VALIDATE_INT));
+        return filter_var ( $string, FILTER_VALIDATE_INT);
     }
 
     public function number(string $string) {
-        return (filter_var ( $string, FILTER_VALIDATE_FLOAT));     
+        return filter_var ( $string, FILTER_VALIDATE_FLOAT);
     }
 
     public function email(string $string) {
-        return (preg_match("/^[a-zA-Z0-9_.]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/", $string));
+        return preg_match("/^[a-zA-Z0-9_.]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/", $string);
     }
 
     public function phone(string $string) {
-        return (preg_match("/^\d{3}[^\d]{0,2}\d{3}[^\d]{0,2}\d{4}$/", $string));    
+        return preg_match("/^\d{3}[^\d]{0,2}\d{3}[^\d]{0,2}\d{4}$/", $string);
     }
 
     public function url(string $string) {
-        return (filter_var ( $string, FILTER_VALIDATE_URL));
+        return filter_var ( $string, FILTER_VALIDATE_URL);
     }
 
     public function string(string $string) {
-        return (preg_match("/(.*)(\r|\n)(.*)/", $string)==0);    
+        return preg_match("/(.*)(\r|\n)(.*)/", $string)==0;    
     }
 
     public function text(string $string) {

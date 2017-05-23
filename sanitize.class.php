@@ -15,23 +15,23 @@ class sanitize {
     }
 
     public function email(string $string): string { 
-        return (string)preg_replace("/^[a-zA-Z0-9_.]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/", '', filter_var ( $string, FILTER_SANITIZE_STRING));
+        return preg_replace("/[^a-zA-Z0-9_.@]+/", '', filter_var ( $string, FILTER_SANITIZE_STRING));
     }
 
     public function phone(string $string): string {
-         return (string)preg_replace("/^\d{3}[^\d]{0,2}\d{3}[^\d]{0,2}\d{4}$/", '', filter_var ( $string, FILTER_SANITIZE_STRING));
+         return preg_replace("/[^0-9]+/", '', filter_var ( $string, FILTER_SANITIZE_STRING));
     }
 
     public function url(string $string): string {
-         return (string) filter_var ( filter_var ( $string, FILTER_SANITIZE_STRING), FILTER_SANITIZE_URL);
+         return filter_var ( filter_var ( $string, FILTER_SANITIZE_STRING), FILTER_SANITIZE_URL);
     }
 
     public function string(string $string): string {
-        return (string)filter_var ( $string, FILTER_SANITIZE_STRING); 
+        return filter_var ( $string, FILTER_SANITIZE_STRING); 
     }
 
     public function text(string $string): string {
-        return (string)filter_var ( $string, FILTER_SANITIZE_STRING);     
+        return filter_var ( $string, FILTER_SANITIZE_STRING);     
     }
 
     public function date(string $string, $format="d-m-Y")
