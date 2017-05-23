@@ -35,8 +35,8 @@ class sanitize {
 
     public function date(string $string, $format="d-m-Y")
     {
-         $date = date_parse($string);
-        // or date_parse_from_format("d/m/Y", $date);
+        // $date = date_parse($string);
+        $date = date_parse_from_format($format, $string);
         if(!checkdate($date['month'], $date['day'], $date['year']))
         return "";
 
