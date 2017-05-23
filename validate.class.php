@@ -35,10 +35,10 @@ class validate {
         return is_string($string); 
     }
 
-    public function date(string $string)
+    public function date(string $string, $format="d-m-Y")
     {
-        $date = date_parse($string);
-        // or date_parse_from_format("d/m/Y", $date);
+        // $date = date_parse($string);
+        $date = date_parse_from_format($format, $string);
         return checkdate($date['month'], $date['day'], $date['year']);
     }
 
@@ -80,7 +80,6 @@ class validate {
 
             case 'postInteger':
             return $this->postInteger($value);
-
         }
     }
 
