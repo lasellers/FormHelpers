@@ -4,4 +4,4 @@ These are a series of framework-less classes for form handling operations (mainl
 
 # Sample Output
 
-![FormHelpers](https://github.com/lasellers/FormHelpers/blob/master/screenshot1.png)
+![FormHelpers](https://github.com/lasellers/FormHelpers/blob/master/screenshot.png)
