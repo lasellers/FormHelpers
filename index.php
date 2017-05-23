@@ -87,7 +87,7 @@ $sanitize=new sanitize();
 $validate=new validate();
 
 echo "<table>\n";
-echo "<tr><th>Type</th><th>Key</th><th>Value</th><th>validate</th><th>New Value</th></tr>";
+echo "<tr><th>Type</th><th>Key</th><th>Value</th><th>validate</th><th>sanitize</th></tr>";
 foreach($datums as $key=>$datum ) {
     list($type,$value)=$datum;
     $newvalue= $sanitize->byType($type,$value);
