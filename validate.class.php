@@ -1,4 +1,5 @@
 <?php
+
 class validate {
 
     public function boolean(string $string) {
@@ -27,7 +28,7 @@ class validate {
     }
 
     public function string(string $string) {
-        return (preg_match("/(.*)(\r|\n)(.*)/", $string));    
+        return (preg_match("/(.*)(\r|\n)(.*)/", $string)==0);    
     }
 
     public function text(string $string) {

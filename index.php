@@ -2,7 +2,6 @@
 require './validate.class.php';
 require './sanitize.class.php';
 
-
 $datums=[
     'bool1'=>['boolean','2342423423423'],
     'bool2'=>['boolean','<script>alert("injection")</script>'],
@@ -64,8 +63,26 @@ $datums=[
         ['a'=>'2342342','b'=>'safdsdfdsf','c'=>'<script>alert("injection post integer")</script>']
         ],
 
+    'name'=>['string','<script>alert(\'injection math\')</script>'],
+    'phone'=>['phone','<script>alert(\'injection phone\')</script>'],
+    'email'=>['email','<script>alert(\'injection email\')</script>'],
+    'subject'=>['string','<script>alert(\'injection subject\')</script>'],
+    'message'=>['text','<script>alert(\'injection message\')</script>'],
+    'math'=>['integer','<script>alert(\'injection math\')</script>'],
+
 ];
 
+//
+if(isset($_POST)) {
+    foreach($_POST as $key=>$post) {
+        if(isset($datums[$key])) {
+            $datums[$key][1]=$post;
+        }
+    }
+}
+
+
+//
 $sanitize=new sanitize();
 $validate=new validate();
 
@@ -87,3 +104,13 @@ if($type=="postInteger") {
 }
 echo "</table>\n";
 
+echo '<hr><br>';
+echo '<form action="" method="post">';
+echo 'name <input type="text" name="name" value="'.$datums['name'][1].'"><br>';
+echo 'phone <input type="text" name="phone" value="'.$datums['phone'][1].'"><br>';
+echo 'email <input type="text" name="email" value="'.$datums['email'][1].'"><br>';
+echo 'subject <input type="text" name="subject" value="'.$datums['subject'][1].'"><br>';
+echo 'message <textarea name="message">'.$datums['message'][1].'</textarea><br>';
+echo '2+3=<input type="number" name="math" size=5 value="'.$datums['math'][1].'"><br>';
+echo '<input type="submit" name="submit" value="submit"><br>';
+echo '</form>';

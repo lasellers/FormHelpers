@@ -1,4 +1,5 @@
 <?php
+
 class sanitize {
 
     public function boolean(string $string): bool  {
